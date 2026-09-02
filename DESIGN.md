@@ -2,15 +2,16 @@
 name: Loam Atelier
 description: Quiet-luxury editorial architecture studio site built around one scroll-scrubbed signature moment
 colors:
-  bone: "#F5F2EC"
-  ink: "#161412"
-  charcoal-olive: "#2A2A24"
-  acid-olive: "#B8C05A"
-  stone: "#8C877D"
-  stone-text: "#6E685D"
-  muted-on-dark: "rgba(245,242,236,0.72)"
-  hairline: "rgba(22,20,18,0.12)"
-  hairline-on-dark: "rgba(245,242,236,0.16)"
+  bone: "#F4F0E6"
+  ink: "#11110D"
+  charcoal-olive: "#283000"
+  acid-olive: "#B7D300"
+  acid-deep: "#7A8500"
+  stone: "#5E624A"
+  stone-text: "#5E624A"
+  muted-on-dark: "rgba(244,240,230,0.72)"
+  hairline: "rgba(17,17,13,0.12)"
+  hairline-on-dark: "rgba(244,240,230,0.16)"
 typography:
   display:
     fontFamily: "Anton, 'Arial Narrow', sans-serif"
@@ -101,21 +102,21 @@ This is explicitly a brief-pinned world: every color, face, and spacing value be
 
 ## Colors
 
-Warm, low-saturation, editorial — five roles doing all the work, deliberately without a bright "brand blue" anywhere in the system.
+Warm, low-saturation, editorial — five roles doing all the work, deliberately without a bright "brand blue" anywhere in the system. Re-sourced from computed-style extraction off the live reference site rather than the written brief's approximations; the accent in particular is a much more saturated lime than the brief's muted chartreuse.
 
 ### Primary
-- **Acid Olive** (#B8C05A): The system's only saturated color. Used for active-state accents only — the current Approach step's number, nav-hover underlines, the carousel arrow's hover fill, small "index" numerals inside the pinned showcase. Never a background field, never more than a few square inches of any viewport.
+- **Acid Olive** (#B7D300): The system's only saturated color — a vivid yellow-lime, brighter than the brief's own written description. Used for active-state accents only — the current Approach step's number, nav-hover underlines, the carousel arrow's hover fill, small "index" numerals inside the pinned showcase. Never a background field, never more than a few square inches of any viewport. At full brightness it is only ~1.5:1 on Bone, so any on-light use of real text size reaches for Acid Deep instead (see below) rather than this value directly.
+- **Acid Deep** (#7A8500): A darkened version of Acid Olive, ~3.5:1 on Bone — used wherever the accent needs to sit as text (bold, ≥14px) on the light ground: the active Approach-step numeral, the nav underline-flip's revealed color. Acid Olive itself stays reserved for dark-background or background-fill uses, where it has plenty of contrast.
 
 ### Neutral
-- **Bone** (#F5F2EC): The default page ground. Warm off-white, never pure white.
-- **Ink** (#161412): Primary text and the footer's background. Warm near-black, never pure black.
-- **Charcoal Olive** (#2A2A24): Secondary dark-section background (Projects showcase, Approach's pinned stage, Testimonials, menu overlay).
-- **Stone** (#8C877D): Decorative/large-text-only warm gray — ghost numerals, borders-adjacent accents, anything ≥24px or already bold. At ~3.2:1 on bone it clears WCAG's 3:1 large-text floor but not the 4.5:1 body-text floor.
-- **Stone Text** (#6E685D): The AA-safe body-copy variant of Stone for use on bone backgrounds (eyebrows, captions, paragraph text, meta lines) — same warm-gray character, darkened until it clears 4.5:1.
-- **Muted on Dark** (rgba(245,242,236,.72)): The equivalent AA-safe muted text color for anything sitting on Ink or Charcoal Olive (footer links, testimonial attribution, carousel counter).
+- **Bone** (#F4F0E6): The default page ground. Warm off-white, never pure white.
+- **Ink** (#11110D): Primary text and the footer's background. Warm near-black, never pure black.
+- **Charcoal Olive** (#283000): Secondary dark-section background (Projects showcase, Approach's pinned stage, Testimonials, menu overlay) — a proper dark olive-green, not a neutral brown-black.
+- **Stone** (#5E624A): Warm olive-gray, used both decoratively (ghost numerals) and as body copy — at ~5.5:1 on Bone it already clears AA for normal text, so unlike the accent it needs no separate darkened variant.
+- **Muted on Dark** (rgba(244,240,230,.72)): The AA-safe muted text color for anything sitting on Ink or Charcoal Olive (footer links, testimonial attribution, carousel counter).
 
 ### Named Rules
-**The Stone Split Rule.** Raw `--stone` never sets the color of actual body copy. It is reserved for elements at large-text scale (≥24px) or purely decorative marks; every paragraph, label, or caption uses `--stone-text` (on light) or `--muted-on-dark` (on dark) instead.
+**The Acid Split Rule.** Raw `--acid` never sets the color of text sitting directly on Bone — it clears contrast only against the dark surfaces or as a background fill. Any on-light textual use of the accent reaches for `--acid-deep` instead.
 
 **The One Voice Rule.** Acid-olive marks state (active, hover, "you are here"). It never decorates a static element — a static olive accent would dilute what the color is for.
 

@@ -6,15 +6,21 @@
    ========================================================================== */
 
 :root{
-  --bone:#F5F2EC;
-  --ink:#161412;
-  --charcoal:#2A2A24;
-  --acid:#B8C05A;
-  --stone:#8C877D;
-  --stone-text:#6E685D; /* stone alone is ~3.2:1 on bone, fails AA for body copy — use this for actual text */
-  --muted-on-dark:rgba(245,242,236,0.72);
-  --hairline:rgba(22,20,18,0.12);
-  --hairline-on-dark:rgba(245,242,236,0.16);
+  /* Palette re-sourced from computed-style extraction off the live
+     reference site (color.surface.muted / text.primary / surface.strong /
+     text.secondary) — more precise than the written brief's approximations,
+     particularly the accent, which is a much more saturated lime than the
+     brief's muted chartreuse. */
+  --bone:#F4F0E6;
+  --ink:#11110D;
+  --charcoal:#283000;
+  --acid:#B7D300;
+  --acid-deep:#7A8500; /* --acid itself is ~1.5:1 on bone — fails contrast as text on light surfaces; this darkened variant clears 3:1 for the large/bold cases that need the accent on a light ground */
+  --stone:#5E624A; /* extracted color.text.inverse; ~5.5:1 on bone, so no separate AA-safe variant is needed the way the old stone required one */
+  --stone-text:#5E624A;
+  --muted-on-dark:rgba(244,240,230,0.72);
+  --hairline:rgba(17,17,13,0.12);
+  --hairline-on-dark:rgba(244,240,230,0.16);
 
   /* extended tones for plate (placeholder-photography) gradients only */
   --clay:#B08A6A;
@@ -210,13 +216,13 @@ h1,h2,h3,p{ margin:0; }
 }
 .nav-link span{
   display:inline-block;
-  transition:translate .45s var(--ease-editorial);
+  transition:translate .35s var(--ease-editorial);
 }
 .nav-link::before{
   content:attr(data-flip-text);
   position:absolute; left:0; top:100%;
-  transition:translate .45s var(--ease-editorial);
-  color:var(--acid);
+  transition:translate .35s var(--ease-editorial);
+  color:var(--acid-deep); /* --acid itself is too light against the solid (bone) header state */
 }
 .nav-link:hover span{ translate:0 -100%; }
 .nav-link:hover::before{ translate:0 -100%; }
@@ -343,7 +349,7 @@ a:hover .link-arrow{ translate:6px 0; }
 .hero-eyebrow .eyebrow-index{ color:var(--acid); }
 .hero-headline{
   font-family:var(--font-display); text-transform:uppercase;
-  font-size:clamp(48px,8.4vw,140px); line-height:.92; letter-spacing:-0.01em;
+  font-size:clamp(48px,9vw,160px); line-height:.92; letter-spacing:-0.01em;
 }
 .line-mask{ display:block; overflow:hidden; }
 .line-inner{ display:block; translate:0 100%; }
@@ -452,14 +458,14 @@ a:hover .link-arrow{ translate:6px 0; }
   display:grid; grid-template-columns:120px minmax(0,1fr); gap:32px; align-items:center;
   padding:0 var(--margin-outer);
   opacity:0; translate:0 28px; pointer-events:none;
-  transition:opacity .6s var(--ease-editorial), translate .6s var(--ease-editorial);
+  transition:opacity .5s var(--ease-editorial), translate .5s var(--ease-editorial);
 }
 .approach-step.is-active{ opacity:1; translate:0 0; pointer-events:auto; }
 .approach-step-number{
   font-family:var(--font-display); font-size:clamp(40px,5vw,72px);
   color:var(--stone); transition:color .5s, scale .5s;
 }
-.approach-step.is-active .approach-step-number{ color:var(--acid); scale:1.05; }
+.approach-step.is-active .approach-step-number{ color:var(--acid-deep); scale:1.05; } /* --acid itself fails contrast even at this size against bone */
 .approach-step-fraction{
   display:block; font-size:12px; letter-spacing:.1em; color:var(--stone-text); margin-bottom:12px;
 }
@@ -633,7 +639,7 @@ a:hover .link-arrow{ translate:6px 0; }
     padding:28px var(--margin-outer); opacity:1; translate:none; pointer-events:auto;
     border-bottom:1px solid var(--hairline);
   }
-  .approach-step-number{ color:var(--acid) !important; scale:1 !important; }
+  .approach-step-number{ color:var(--acid-deep) !important; scale:1 !important; }
 
   .about-split{ padding:96px var(--margin-outer); gap:40px; }
   .journal-grid{ grid-template-columns:1fr; gap:48px; }
