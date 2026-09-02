@@ -1,8 +1,8 @@
 /* ==========================================================================
    Loam Atelier — Phase 1 motion mockup
    Tokens are pinned by the client brief; do not introduce new UI colors.
-   Plate gradients simulate photography (no image generation available this
-   session) — swap every .plate-* background for real photography in Phase 2.
+   Plates use real photography supplied by the client (see /images);
+   swap in the studio's own final project photography for the real build.
    ========================================================================== */
 
 :root{
@@ -21,12 +21,6 @@
   --muted-on-dark:rgba(244,240,230,0.72);
   --hairline:rgba(17,17,13,0.12);
   --hairline-on-dark:rgba(244,240,230,0.16);
-
-  /* extended tones for plate (placeholder-photography) gradients only */
-  --clay:#B08A6A;
-  --sand:#D9CBB2;
-  --moss:#6E7550;
-  --walnut:#4A3B30;
 
   --font-display:'Anton', 'Arial Narrow', sans-serif;
   --font-body:'Archivo', -apple-system, 'Segoe UI', sans-serif;
@@ -105,6 +99,8 @@ h1,h2,h3,p{ margin:0; }
 }
 
 /* ---------------- shared plate system ---------------- */
+/* Real photography (see /images) with a light filmic grain overlay on top,
+   per the brief's own "subtle grain/noise... non-flat feel" spec. */
 .plate{
   position:relative; width:100%; height:100%;
   background-size:cover; background-position:center;
@@ -113,71 +109,17 @@ h1,h2,h3,p{ margin:0; }
 .plate::after{
   content:''; position:absolute; inset:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.4'/%3E%3C/svg%3E");
-  mix-blend-mode:overlay; opacity:.5;
+  mix-blend-mode:overlay; opacity:.18;
 }
-.plate-hero{
-  background:
-    radial-gradient(120% 90% at 18% 12%, rgba(184,192,90,.16), transparent 55%),
-    linear-gradient(200deg, var(--walnut) 0%, var(--ink) 62%, #0c0b09 100%);
-}
-.plate-hero::before{
-  content:''; position:absolute; inset:0; opacity:.14;
-  background-image:
-    repeating-linear-gradient(90deg, var(--bone) 0 2px, transparent 2px 18%),
-    repeating-linear-gradient(0deg, var(--bone) 0 2px, transparent 2px 30%);
-  background-position:60% 0;
-  background-size:60% 100%, 100% 70%;
-}
-.plate-signature{
-  background:
-    radial-gradient(60% 70% at 50% 45%, rgba(245,242,236,.5), transparent 65%),
-    linear-gradient(135deg, var(--sand) 0%, var(--clay) 55%, var(--walnut) 100%);
-}
-.plate-signature::before{
-  content:''; position:absolute; left:50%; top:52%; translate:-50% -50%;
-  width:26%; aspect-ratio:.72; border-radius:48% 48% 44% 44% / 55% 55% 45% 45%;
-  border:2px solid rgba(22,20,18,.22); opacity:.8;
-}
-.plate-project-2{
-  background:
-    radial-gradient(90% 70% at 80% 20%, rgba(184,192,90,.14), transparent 60%),
-    linear-gradient(115deg, var(--walnut) 0%, #6b5644 45%, var(--stone) 100%);
-}
-.plate-project-2::before{
-  content:''; position:absolute; inset:0; opacity:.16;
-  background-image:repeating-linear-gradient(90deg, var(--bone) 0 3px, transparent 3px 9%);
-}
-.plate-project-3{
-  background:
-    radial-gradient(70% 60% at 30% 70%, rgba(255,255,255,.25), transparent 65%),
-    linear-gradient(160deg, var(--sand) 0%, #cabb9d 55%, var(--stone) 100%);
-}
-.plate-project-3::before{
-  content:''; position:absolute; inset:-10%; opacity:.2;
-  background-image:repeating-linear-gradient(70deg, transparent 0 22px, rgba(22,20,18,.5) 22px 23px);
-}
-.plate-about{
-  background:
-    radial-gradient(80% 90% at 70% 10%, rgba(184,192,90,.18), transparent 60%),
-    linear-gradient(150deg, var(--moss) 0%, var(--walnut) 60%, var(--ink) 100%);
-}
-.plate-journal-1{ background:linear-gradient(140deg, var(--sand), var(--clay)); }
-.plate-journal-1::before{ content:''; position:absolute; left:14%; top:60%; width:60%; height:2px; background:rgba(22,20,18,.3); box-shadow:0 14px 0 rgba(22,20,18,.2), 0 -14px 0 rgba(22,20,18,.15); }
-.plate-journal-2{ background:linear-gradient(140deg, var(--stone), var(--walnut)); }
-.plate-journal-2::before{ content:''; position:absolute; left:20%; top:35%; width:18%; height:18%; border-radius:50%; border:2px solid rgba(245,242,236,.5);
-  box-shadow:34px 10px 0 -1px rgba(245,242,236,.35), 68px -6px 0 -2px rgba(245,242,236,.25); }
-.plate-journal-3{ background:linear-gradient(150deg, var(--sand), var(--moss)); }
-.plate-journal-3::before{ content:''; position:absolute; right:-10%; top:-10%; width:70%; aspect-ratio:1; border-radius:50%;
-  background:radial-gradient(circle, rgba(245,242,236,.5), transparent 70%); }
-.plate-cta{
-  background:
-    radial-gradient(50% 60% at 70% 30%, rgba(184,192,90,.14), transparent 60%),
-    linear-gradient(200deg, #2c241c 0%, var(--ink) 55%, #0a0908 100%);
-}
-.plate-cta::before{
-  content:''; position:absolute; inset:0; opacity:.5;
-  background-image:repeating-linear-gradient(90deg, rgba(245,242,236,.14) 0 2px, transparent 2px 16%);
-}
+.plate-hero{ background-image:url("images/hero.jpg"); background-position:center 35%; }
+.plate-signature{ background-image:url("images/signature.jpg"); }
+.plate-project-2{ background-image:url("images/project-2.jpg"); background-position:center 30%; }
+.plate-project-3{ background-image:url("images/project-3.jpg"); }
+.plate-about{ background-image:url("images/about.jpg"); }
+.plate-journal-1{ background-image:url("images/journal-1.jpg"); }
+.plate-journal-2{ background-image:url("images/journal-2.jpg"); }
+.plate-journal-3{ background-image:url("images/journal-3.jpg"); }
+.plate-cta{ background-image:url("images/cta.jpg"); background-position:center 65%; }
 
 /* ================= HEADER ================= */
 .site-header{
@@ -338,7 +280,9 @@ a:hover .link-arrow{ translate:6px 0; }
 }
 .hero-scrim{
   position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(10,9,8,.82) 0%, rgba(10,9,8,.15) 45%, transparent 65%);
+  background:
+    linear-gradient(to top, rgba(10,9,8,.85) 0%, rgba(10,9,8,.4) 40%, rgba(10,9,8,.12) 70%, transparent 100%),
+    rgba(10,9,8,.14);
 }
 .hero-content{
   position:relative; z-index:2; height:100%;
@@ -407,6 +351,16 @@ a:hover .link-arrow{ translate:6px 0; }
   position:absolute; inset:0; opacity:0; transform:scale(1.02);
 }
 .pin-image-inner.is-active{ opacity:1; }
+.pin-image-frame::after{
+  /* Real photography varies a lot in brightness (a white-bedding shot vs.
+     a dark wood-panelled one) — the caption needs guaranteed contrast
+     regardless of which project is showing, so this scrim is permanent,
+     not tied to any one photo. */
+  content:''; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:
+    linear-gradient(0deg, rgba(10,9,8,.72) 0%, rgba(10,9,8,.32) 30%, transparent 58%),
+    linear-gradient(90deg, rgba(10,9,8,.4) 0%, transparent 32%);
+}
 
 .pin-caption{
   position:absolute; left:var(--margin-outer); bottom:14%; z-index:3;

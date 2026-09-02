@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Static HTML/CSS/vanilla JS, no build step. GSAP + ScrollTrigger (+ Lenis for smooth-scroll) loaded via CDN. Tailwind via CDN is allowed for utility layout; the design-token palette is custom, not default Tailwind colors. This is explicit in the client's own brief (Section 2): fastest to spin up, easiest to hand off as a single file or static-host link for review, no framework overhead the mockup doesn't need.
+Static HTML/CSS/vanilla JS, no build step. GSAP + ScrollTrigger + Lenis are vendored locally (`/vendor`) rather than loaded from a CDN — a CDN dependency turned out to be a real failure mode (an ad-blocker or firewall silently blocking the scripts kills every animation while the rest of the page renders fine), so the page carries its own copies instead. This is explicit in the client's own brief (Section 2): fastest to spin up, easiest to hand off as a single file or static-host link for review, no framework overhead the mockup doesn't need.
 
 ## Users
 
@@ -40,7 +40,7 @@ Quiet luxury editorial, not SaaS-energetic: huge confident display type, generou
 - Respect `prefers-reduced-motion` — all GSAP calls short-circuit to instant end-states.
 - Target Lighthouse performance ≥90 despite the animation load.
 - The aesthetic leans low-contrast by design intent; body text must still clear WCAG AA.
-- Placeholder copy, project photography, and testimonials only, clearly marked as placeholders for the client to swap in their own brand, project photography, and testimonials. Do not fabricate real client names, real testimonials, or real project outcomes.
+- Placeholder copy and testimonials; photography is real (client-supplied stock/reference photos matched to content, not the studio's actual projects — see Evidence on Hand). All of it is swappable before this is a real marketing claim. Do not fabricate real client names, real testimonials, or real project outcomes.
 - Studio brand name is a placeholder invented for this build (not the benchmark site's name/assets) — see Brand Commitments.
 
 ## Brand Commitments
@@ -49,7 +49,7 @@ No real studio identity exists yet. Placeholder brand for this build: **"Loam At
 
 ## Evidence on Hand
 
-None. No real projects, testimonials, press, or photography exist yet — all imagery, project descriptions, and quotes in this build are placeholders clearly marked for replacement.
+Real architectural/interior photography, client-supplied (`Demo website images.zip`, 39 stock/reference photos), now placed by content fit: e.g. an actual courtyard-house exterior for "The Courtyard House," a wood-panelled kitchen for "The Ash Apartment," a linen-bedding bedroom for "The Linen Room," a construction-measuring stock photo for the renovation-planning journal entry, a materials flat-lay for the materials journal entry. None of these depict the real studio's real projects — they are stand-ins chosen for a strong content match, not the studio's own work, and must be swapped for actual project photography before this is a real marketing claim. Project names, quotes, and the studio name itself remain placeholders.
 
 ## Product Principles
 
@@ -57,7 +57,7 @@ None. No real projects, testimonials, press, or photography exist yet — all im
 2. Editorial confidence over density — big type, restraint, whitespace; when in doubt, cut rather than add.
 3. Never let the CMS destination leak into Phase 1 — no Divi markup, shortcodes, or WordPress assumptions in this deliverable.
 4. Desktop gets the full pinned/scrubbed experience; mobile gets an intentionally designed lighter equivalent, never a broken or disabled one.
-5. Everything content-shaped (studio name, project names, quotes, photography) is a labeled placeholder, not a fabricated real-world claim.
+5. Everything content-shaped (studio name, project names, quotes) is a labeled placeholder, not a fabricated real-world claim; supplied stock/reference photography is a stand-in for real project photography, not itself a claim about the studio's actual work.
 
 ## Accessibility & Inclusion
 

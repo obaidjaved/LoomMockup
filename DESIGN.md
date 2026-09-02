@@ -90,7 +90,7 @@ components:
 
 **Creative North Star: "The Slow Reveal"**
 
-Loam Atelier is an editorial-magazine reading experience wearing a website's clothes: huge confident Anton display type, generous bone-colored whitespace, and warm material tones standing in for photography, paced by one deliberate cinematic mechanism rather than a library of small hover effects. The system exists to prove a single motion idea — a small, contained image scaling into full-bleed while pinned, cross-fading through content with staggered text keyed to scroll progress — and then to apply that same unhurried, scrubbed choreography everywhere the content allows (the Projects showcase and the Approach steps both pin and scrub; everything else breathes with the same eased, staggered reveal at a gentler amplitude).
+Loam Atelier is an editorial-magazine reading experience wearing a website's clothes: huge confident Anton display type, generous bone-colored whitespace, and warm architectural photography (client-supplied stock/reference photos matched to content, not the studio's real projects), paced by one deliberate cinematic mechanism rather than a library of small hover effects. The system exists to prove a single motion idea — a small, contained image scaling into full-bleed while pinned, cross-fading through content with staggered text keyed to scroll progress — and then to apply that same unhurried, scrubbed choreography everywhere the content allows (the Projects showcase and the Approach steps both pin and scrub; everything else breathes with the same eased, staggered reveal at a gentler amplitude).
 
 This is explicitly a brief-pinned world: every color, face, and spacing value below was specified by the client's own brief and cross-checked against a live reference site rather than invented here. Confirmed visual rejections: no bouncy SaaS energy, no default AI-slop palette (warm-cream-plus-terracotta was avoided in favor of the brief's own bone/ink/acid-olive system), no icon-font or emoji glyphs (arrows are authored inline SVG).
 
@@ -173,7 +173,7 @@ Mostly square: buttons, hairline dividers, and grid cards carry no radius. The t
 
 ### Cards / Containers
 - **Corner Style:** 4–10px depending on component (see Shapes).
-- **Background:** The `.plate` gradient system — layered CSS gradients in the extended clay/sand/walnut/moss palette plus a subtle SVG-turbulence overlay at low opacity, standing in for photography until real project imagery replaces them.
+- **Background:** The `.plate` system — real photography (`/images`) with a light SVG-turbulence grain overlay on top for a filmic, non-flat finish. Any surface with an overlaid caption (the pinned showcase, hero, CTA) also carries a permanent directional scrim, sized to guarantee text contrast regardless of which photo is behind it — photo brightness varies a lot (a white-bedding shot vs. a dark wood-panelled one), and the scrim can't be tuned per-photo the way a flat color could.
 - **Shadow Strategy:** None, except the pinned frame (see Elevation).
 
 ### Signature Component: The Pinned Showcase

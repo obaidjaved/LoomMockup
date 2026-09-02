@@ -300,7 +300,17 @@
     var steps = gsap.utils.toArray('.approach-step');
     if (!steps.length) return;
 
-    if (prefersReduce) { gsap.set(steps, { opacity: 1 }); return; }
+    if (prefersReduce) {
+      /* Steps are position:absolute/inset:0 (the spotlight-window layout),
+         stacked exactly on top of each other — opacity:1 on all of them at
+         once (the old fallback, written before that layout existed) makes
+         all four render overlapping and unreadable. Fall back to normal
+         flow instead, same as the mobile breakpoint already does. */
+      var stepsWrap = document.querySelector('[data-approach-steps]');
+      gsap.set(stepsWrap, { height: 'auto', overflow: 'visible' });
+      gsap.set(steps, { opacity: 1, position: 'static', clearProps: 'translate' });
+      return;
+    }
 
     ScrollTrigger.create({
       trigger: '.approach',
